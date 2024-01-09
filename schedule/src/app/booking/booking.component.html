@@ -1,0 +1,78 @@
+<div class="mt-5">
+<h1>Diagnostic Test Booking</h1>
+</div>
+
+<div class="border p-5 background rounded-5 mb-4  mx-auto">
+  <div>{{errorMessage}}</div>
+  <div id="success" class="text-success">{{booking}}</div>
+    <div class="container"> 
+      <div class="">
+        <div class="form-group">
+       
+          <div class="custom-dropdown ">
+          
+            <select [(ngModel)]="schedule.testName" class="form-control" id="test-list" 
+            required>
+              <option [ngValue]="undefined" disabled selected
+              >Select a Lab Test</option>
+              <option *ngFor="let test of labTests" [value]="test.name">{{ test.name }}</option>
+            </select>
+          </div>
+        </div>
+        
+        
+  
+      
+        <div class="form-group">
+          <h2 class="text mt-2">Upload Prescription</h2>
+          <div class="">
+            <input [(ngModel)]="schedule.prescriptionImages" 
+            type="file" class="fileinput" id="customFile" (change)="onFileChanged($event)" required>
+          </div>
+
+       
+  
+        <div class="booking-form mt-2">
+          <h2>Booking Details</h2>
+          <form>
+            <div class="form-group">
+              <input [(ngModel)]="schedule.fullName" 
+              placeholder="Name"
+              type="text" class="form-control border-3" id="name" name="name" required>
+            </div>
+  
+            <div class="form-group">
+              <input [(ngModel)]="schedule.description"  type="email" 
+              placeholder="Email"
+              class="form-control border-3" id="email" name="email" required>
+            </div>
+  
+            <div class="form-group">
+              <input type="tel" class="form-control border-3" id="phone" name="phone" 
+              placeholder="Phone"
+              required>
+            </div>
+  
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="date">Appointment Date:</label>
+                <input [(ngModel)]="schedule.appointmentDate"  type="date" class="form-control border-3" id="date" name="date" required>
+              </div>
+  
+              <div class="form-group col-md-6">
+                <label for="time">Appointment Time:</label>
+                <input [(ngModel)]="schedule.appointmentTime" type="time" class="form-control border-3" id="time" name="time" required>
+              </div>
+            </div>
+  
+            <div class="form-group mt-3">
+              <button
+              title="Submit's the schedule "
+              type="submit" class="btn btn-sm btn-primary " (click)="onSubmit()">Book Tests</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
